@@ -462,73 +462,24 @@ footer a:hover { color: #fff; }
   .proj-gallery-grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* ─── HAMBURGER BUTTON ─── */
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 8px;
-  transition: background 0.2s;
-}
-.nav-hamburger:hover { background: rgba(255,255,255,0.1); }
-.nav-hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: #fff;
-  border-radius: 2px;
-  transition: all 0.28s cubic-bezier(0.22,1,0.36,1);
-  transform-origin: center;
-}
-.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
 @media (max-width: 560px) {
-  .nav-hamburger { display: flex; }
-
+  nav {
+    padding: 0 16px;
+    height: 56px;
+  }
+  .nav-logo img { height: 36px; }
   .nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    position: fixed;
-    top: 64px; left: 0; right: 0;
-    background: rgba(17,17,17,0.98);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 8px 0 16px;
-    transform: translateY(-110%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.25s;
-    z-index: 199;
+    gap: 12px;
   }
-  .nav-links.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
-  .nav-links li { width: 100%; }
   .nav-links a {
-    display: block;
-    padding: 13px 24px;
-    font-size: 0.95rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.72rem;
   }
   .nav-cta {
-    margin: 12px 24px 0 !important;
-    display: block;
-    text-align: center;
-    border-radius: 100px !important;
-    padding: 11px 20px !important;
+    padding: 5px 12px !important;
+    font-size: 0.72rem !important;
   }
-  .nav-lang-item { padding: 12px 24px 4px; }
-  .nav-lang-switch { width: fit-content; }
+  .lang-opt { font-size: 0.65rem; padding: 2px 4px; }
+
   section, #portfolio, #awards, #education, #contact { padding-top: 56px; padding-bottom: 56px; }
   .container, .contact-inner, .sec-head, .p-track, .aw-track, .edu-track { padding-left: 16px; padding-right: 16px; }
   .modal-content { padding: 28px 16px 60px; }
