@@ -436,6 +436,31 @@ footer a:hover { color: #fff; }
 .lightbox-close:hover { background: rgba(255,255,255,0.25); }
 
 
+/* Switch idioma mobile — oculto en desktop, visible en mobile */
+.nav-lang-mobile {
+  display: none;
+  align-items: center;
+  gap: 3px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 100px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.nav-lang-mobile .lang-opt {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+  padding: 2px 5px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.nav-lang-mobile .lang-opt.active { color: #fff; background: rgba(255,255,255,0.15); }
+.nav-lang-mobile .lang-divider { font-size: 0.6rem; color: rgba(255,255,255,0.2); }
+
+
 /* ─── ANIMACIÓN ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(22px); }
@@ -463,22 +488,21 @@ footer a:hover { color: #fff; }
 }
 
 @media (max-width: 560px) {
+  nav { padding: 0 20px; }
+
+  /* Ocultar links y botón contacto */
+  .nav-links { display: none; }
+
+  /* Mostrar solo logo + lang switch */
   nav {
-    padding: 0 16px;
-    height: 56px;
+    justify-content: space-between;
   }
-  .nav-logo img { height: 36px; }
-  .nav-links {
-    gap: 12px;
+  .nav-logo img { height: 40px; }
+
+  /* Mostrar el switch de idioma suelto en el nav (fuera de .nav-links) */
+  .nav-lang-mobile {
+    display: flex;
   }
-  .nav-links a {
-    font-size: 0.72rem;
-  }
-  .nav-cta {
-    padding: 5px 12px !important;
-    font-size: 0.72rem !important;
-  }
-  .lang-opt { font-size: 0.65rem; padding: 2px 4px; }
 
   section, #portfolio, #awards, #education, #contact { padding-top: 56px; padding-bottom: 56px; }
   .container, .contact-inner, .sec-head, .p-track, .aw-track, .edu-track { padding-left: 16px; padding-right: 16px; }
