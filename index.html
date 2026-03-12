@@ -28,9 +28,12 @@
 
 <!-- ─── NAV ─── -->
 <nav>
+  <!-- Logo — siempre visible, izquierda -->
   <a href="#hero" class="nav-logo" id="navLogo" title="Volver al inicio">
     <img src="assets/images/jm_logo_white.png" alt="Julián Matter" />
   </a>
+
+  <!-- Links desktop -->
   <ul class="nav-links" id="navLinks">
     <li><a href="#about"      data-i18n="nav.about">Sobre mí</a></li>
     <li><a href="#experience" data-i18n="nav.experience">Experiencia</a></li>
@@ -46,13 +49,31 @@
     </li>
     <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contacto</a></li>
   </ul>
-  <!-- Switch idioma solo mobile (fuera de nav-links) -->
-  <div class="nav-lang-mobile" id="langSwitchMobile">
-    <span class="lang-opt" data-lang="es">ES</span>
-    <span class="lang-divider">/</span>
-    <span class="lang-opt" data-lang="en">EN</span>
+
+  <!-- Derecha mobile: switch idioma + botón hamburguesa -->
+  <div class="nav-mobile-right">
+    <div class="nav-lang-switch" id="langSwitchMobile">
+      <span class="lang-opt active" data-lang="es">ES</span>
+      <span class="lang-divider">/</span>
+      <span class="lang-opt" data-lang="en">EN</span>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Menú mobile desplegable (fuera del nav para no afectar layout) -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about"      data-i18n="nav.about">Sobre mí</a>
+  <a href="#experience" data-i18n="nav.experience">Experiencia</a>
+  <a href="#portfolio"  data-i18n="nav.portfolio">Proyectos</a>
+  <a href="#awards"     data-i18n="nav.awards">Premios</a>
+  <a href="#education"  data-i18n="nav.education">Educación</a>
+  <a href="#contact"    data-i18n="nav.contact" class="mobile-menu-cta">Contacto</a>
+</div>
 
 
 <!-- ─── HERO ─── -->
@@ -377,41 +398,61 @@
 
 <!-- ─── FOOTER ─── -->
 <footer>
-  <p>© 2025 Julián Matter · Ingeniero Civil &amp; Data Science · Rosario, Argentina · <a href="/cdn-cgi/l/email-protection#751  <p>© 2025 Julián Matter · Ingeniero Civil &amp; Data Science · Rosario, Argentina · <a href="mailto:julianmatter1@gmail.com">julianmatter1@gmail.com</a></p>
+  <p>© 2025 Julián Matter · Ingeniero Civil &amp; Data Science · Rosario, Argentina · <a href="mailto:julianmatter1@gmail.com">julianmatter1@gmail.com</a></p>
 </footer>
 
 <script src="assets/js/main.js"></script>
 <script src="assets/js/projects.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script>
-// Sincronizar switch de idioma mobile con el principal
-(function() {
-  const mobileSwitchEl = document.getElementById('langSwitchMobile');
-  if (!mobileSwitchEl) return;
-  mobileSwitchEl.querySelectorAll('.lang-opt').forEach(opt => {
-    opt.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const lang = opt.dataset.lang;
-      // Disparar el mismo cambio que el switch principal
-      document.querySelectorAll('.lang-opt').forEach(o => {
-        o.classList.toggle('active', o.dataset.lang === lang);
-      });
-      localStorage.setItem('jm_lang', lang);
-      // Aplicar traducciones
-      if (typeof TRANSLATIONS !== 'undefined') {
-        const t = TRANSLATIONS[lang] || TRANSLATIONS['es'];
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          if (t[key] !== undefined) el.innerHTML = t[key];
-        });
-        document.documentElement.lang = lang;
-      }
-    });
+// ─── Hamburger menu ───────────────────────────────────────
+(function () {
+  var btn    = document.getElementById('navHamburger');
+  var menu   = document.getElementById('mobileMenu');
+
+  if (!btn || !menu) return;
+
+  function openMenu() {
+    btn.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    menu.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    btn.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  function toggleMenu() {
+    if (menu.classList.contains('is-open')) closeMenu();
+    else openMenu();
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    toggleMenu();
   });
-  // Sincronizar estado inicial
-  const currentLang = localStorage.getItem('jm_lang') || 'es';
-  mobileSwitchEl.querySelectorAll('.lang-opt').forEach(o => {
-    o.classList.toggle('active', o.dataset.lang === currentLang);
+
+  // Cerrar al tocar un link del menú
+  menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Cerrar al tocar fuera
+  document.addEventListener('click', function (e) {
+    if (menu.classList.contains('is-open') &&
+        !menu.contains(e.target) &&
+        !btn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // ESC cierra el menú
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
   });
 })();
 </script>

@@ -436,35 +436,91 @@ footer a:hover { color: #fff; }
 .lightbox-close:hover { background: rgba(255,255,255,0.25); }
 
 
-/* Switch idioma mobile — oculto en desktop, visible en mobile */
-.nav-lang-mobile {
-  display: none;
-  align-items: center;
-  gap: 3px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 100px;
-  padding: 3px 8px;
-  cursor: pointer;
-}
-.nav-lang-mobile .lang-opt {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: 0.06em;
-  padding: 2px 5px;
-  border-radius: 4px;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-.nav-lang-mobile .lang-opt.active { color: #fff; background: rgba(255,255,255,0.15); }
-.nav-lang-mobile .lang-divider { font-size: 0.6rem; color: rgba(255,255,255,0.2); }
-
-
 /* ─── ANIMACIÓN ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ─── NAV MOBILE RIGHT (hamburger + lang switch) ─── */
+/* Oculto en desktop */
+.nav-mobile-right { display: none; }
+
+/* ─── HAMBURGER ─── */
+.nav-hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+/* X al abrir */
+.nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.is-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── MOBILE MENU (panel desplegable) ─── */
+.mobile-menu {
+  display: none; /* solo existe en mobile */
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 199;
+  background: rgba(14,14,14,0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-direction: column;
+  padding: 8px 0 20px;
+  /* Estado cerrado */
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.28s ease, opacity 0.22s ease;
+}
+.mobile-menu.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.mobile-menu a {
+  display: block;
+  padding: 14px 28px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color 0.2s, background 0.2s;
+}
+.mobile-menu a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu-cta {
+  margin: 14px 28px 0 !important;
+  border: 1px solid rgba(255,255,255,0.25) !important;
+  border-radius: 100px !important;
+  text-align: center !important;
+  background: rgba(255,255,255,0.1) !important;
+  color: #fff !important;
+  padding: 12px 20px !important;
+}
+.mobile-menu-cta:hover {
+  background: rgba(255,255,255,0.2) !important;
 }
 
 
@@ -488,24 +544,17 @@ footer a:hover { color: #fff; }
 }
 
 @media (max-width: 560px) {
+  /* Nav: ocultar links desktop, mostrar mobile-right */
+  .nav-links        { display: none !important; }
+  .nav-mobile-right { display: flex; align-items: center; gap: 12px; }
+  .mobile-menu      { display: flex; }
+
   nav { padding: 0 20px; }
-
-  /* Ocultar links y botón contacto */
-  .nav-links { display: none; }
-
-  /* Mostrar solo logo + lang switch */
-  nav {
-    justify-content: space-between;
-  }
   .nav-logo img { height: 40px; }
-
-  /* Mostrar el switch de idioma suelto en el nav (fuera de .nav-links) */
-  .nav-lang-mobile {
-    display: flex;
-  }
 
   section, #portfolio, #awards, #education, #contact { padding-top: 56px; padding-bottom: 56px; }
   .container, .contact-inner, .sec-head, .p-track, .aw-track, .edu-track { padding-left: 16px; padding-right: 16px; }
   .modal-content { padding: 28px 16px 60px; }
   .proj-gallery-grid { grid-template-columns: 1fr; }
+  .modal-nav { padding: 0 16px; }
 }
