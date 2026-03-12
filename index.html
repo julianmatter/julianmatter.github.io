@@ -31,7 +31,12 @@
   <a href="#hero" class="nav-logo" id="navLogo" title="Volver al inicio">
     <img src="assets/images/jm_logo_white.png" alt="Julián Matter" />
   </a>
-  <ul class="nav-links">
+  <!-- Hamburger (solo mobile) -->
+  <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links" id="navLinks">
     <li><a href="#about"      data-i18n="nav.about">Sobre mí</a></li>
     <li><a href="#experience" data-i18n="nav.experience">Experiencia</a></li>
     <li><a href="#portfolio"  data-i18n="nav.portfolio">Proyectos</a></li>
@@ -343,13 +348,13 @@
           <div class="section-label" data-i18n="contact.label">Contacto</div>
           <h2 data-i18n="contact.title">¿Hablamos?</h2>
           <p data-i18n="contact.body">Estoy abierto a nuevas oportunidades, colaboraciones en proyectos de ingeniería e IA, o simplemente intercambiar ideas sobre tecnología aplicada a construcción e infraestructura.</p>
-          <a href="mailto:julianmatter1@gmail.com" class="btn btn-white" data-i18n="contact.cta">Enviar un email →</a>
+          <a href="/cdn-cgi/l/email-protection#93f9e6fffaf2fdfef2e7e7f6e1a2d3f4fef2faffbdf0fcfe" class="btn btn-white" data-i18n="contact.cta">Enviar un email →</a>
         </div>
       </div>
       <div class="contact-links">
-        <a href="mailto:julianmatter1@gmail.com" class="c-link">
+        <a href="/cdn-cgi/l/email-protection#8ee4fbe2e7efe0e3effafaebfcbfcee9e3efe7e2a0ede1e3" class="c-link">
           <span class="ci">✉️</span>
-          <div><div class="cl" data-i18n="contact.email">Email</div><div class="cv">julianmatter1@gmail.com</div></div>
+          <div><div class="cl" data-i18n="contact.email">Email</div><div class="cv"><span class="__cf_email__" data-cfemail="a4ced1c8cdc5cac9c5d0d0c1d695e4c3c9c5cdc88ac7cbc9">[email&#160;protected]</span></div></div>
         </a>
         <a href="https://www.linkedin.com/in/julianmatter/" target="_blank" class="c-link">
           <span class="ci">💼</span>
@@ -371,11 +376,32 @@
 
 <!-- ─── FOOTER ─── -->
 <footer>
-  <p>© 2025 Julián Matter · Ingeniero Civil &amp; Data Science · Rosario, Argentina · <a href="mailto:julianmatter1@gmail.com">julianmatter1@gmail.com</a></p>
+  <p>© 2025 Julián Matter · Ingeniero Civil &amp; Data Science · Rosario, Argentina · <a href="/cdn-cgi/l/email-protection#751  <p>© 2025 Julián Matter · Ingeniero Civil &amp; Data Science · Rosario, Argentina · <a href="mailto:julianmatter1@gmail.com">julianmatter1@gmail.com</a></p>
 </footer>
 
 <script src="assets/js/main.js"></script>
 <script src="assets/js/projects.js"></script>
 <script src="assets/js/i18n.js"></script>
+<script>
+// ─── Hamburger menu ───
+(function() {
+  const btn   = document.getElementById('navHamburger');
+  const links = document.getElementById('navLinks');
+  if (!btn || !links) return;
+  function closeMenu() {
+    btn.classList.remove('open');
+    links.classList.remove('open');
+  }
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    btn.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !links.contains(e.target)) closeMenu();
+  });
+})();
+</script>
 </body>
 </html>
