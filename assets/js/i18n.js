@@ -20,15 +20,15 @@ const TRANSLATIONS = {
     'hero.cta2':  'Ver proyectos',
     'hero.c1l': 'Premio Internacional', 'hero.c1s': 'Innovación en Carreteras 2024 · España',
     'hero.c2l': 'Premio Nacional',      'hero.c2s': 'Ponencias Nacionales · Argentina 2024',
-    'hero.c3l': 'Experiencia',          'hero.c3v': '2+ años', 'hero.c3s': 'Ing. Civil + Data Science',
-    'hero.c4l': 'Conferencias',         'hero.c4s': 'Nac. e internacionales',
+    'hero.c3l': 'Experiencia',          'hero.c3v': '3+ años', 'hero.c3s': 'Ing. Civil + Data Science',
+    'hero.c4l': 'Conferencias',         'hero.c4s': 'Nac. e Internacionales',
 
     // ── SOBRE MÍ
     'about.label':    'Sobre mí',
     'about.title':    'Ingeniería con enfoque<br /><em>Data-Driven</em>',
     'about.p1':       'Soy Ingeniero Civil graduado de la Universidad Nacional de Rosario. Combino la rigurosidad técnica de la ingeniería con el poder del análisis de datos e IA para resolver problemas reales en infraestructura y construcción.',
     'about.p2':       'Trabajo en el cruce entre la Ingeniería Civil y la Ciencia de Datos — desarrollando herramientas que automatizan procesos, mejoran la toma de decisiones y generan valor concreto.',
-    'about.p3':       'Trabajos reconocidos internacionalmente e investigaciones presentadas en Argentina, Colombia y México, con disertaciones en seminarios nacionales de referencia del sector vial.',
+    'about.p3':       'Trabajos reconocidos internacionalmente e investigaciones presentadas en Argentina, Colombia y México, con disertaciones en seminarios técnicos de referencia del sector.',
     'about.award':    '🏆 Accésit — Premio Internacional a la Innovación en Carreteras 2024 (X Edición · España)',
     'about.awardsub': '"Hacia la Modernización del Análisis del Estado Superficial de Pavimentos en Argentina"',
 
@@ -52,9 +52,8 @@ const TRANSLATIONS = {
     'portfolio.sub':    'Desarrollos propios y en colaboración con empresas, en la intersección entre ingeniería, datos, IA y automatización.',
     'proj.cta':         'Ver detalle →',
     'proj.overlay':     'Ver proyecto',
-    // descripción corta de la card — sin la frase de productividad
     'proj.pav.title':   'Evaluador Superficial de Pavimentos',
-    'proj.pav.desc':    'Software con IA para detectar, clasificar y cuantificar fallas superficiales en pavimentos de forma automática, integrando tecnología LCMS y Computer Vision.',
+    'proj.pav.desc':    'Software con IA para detectar, clasificar y cuantificar fallas en pavimentos, e implementar estrategias de mantenimiento inteligente — reduciendo tiempos de análisis de 40 a 1 minuto por kilómetro.',
     'proj.pres.title':  'Presupuestador de Proyectos Industriales',
     'proj.pres.desc':   'Software que integra bases de datos históricas de la empresa para presupuestar proyectos industriales con precisión y generar exportaciones de seguimiento.',
     'proj.vis.title':   'Visualización de Datos de Pavimentos',
@@ -86,7 +85,7 @@ const TRANSLATIONS = {
     'proj.dash.modal.title':  'Dashboard de Análisis de Compras',
     'proj.dash.modal.topics': 'Business Intelligence|Análisis de Datos',
 
-    // ── MODAL — captions de galería (caption|sub — separados por |)
+    // ── MODAL — captions de galería
     'proj.pav.modal.gallery': [
       { caption: 'Algoritmo de Agrupación',    sub: 'Fallas Superficiales' },
       { caption: 'Procesamiento de Fallas',    sub: 'Análisis de Deterioros' },
@@ -98,8 +97,8 @@ const TRANSLATIONS = {
       { caption: 'Dashboard Precio de Venta', sub: 'Análisis Económico General' },
     ],
     'proj.vis.modal.gallery': [
-      { caption: 'Análisis de Fallas',      sub: 'Información de Deterioros' },
-      { caption: 'Recorrido Virtual',        sub: 'Cámara Frontal Disponible' },
+      { caption: 'Análisis de Fallas',       sub: 'Información de Deterioros' },
+      { caption: 'Recorrido Virtual',         sub: 'Cámara Frontal Disponible' },
       { caption: 'Análisis de Reparaciones', sub: 'Bacheos Propuestos' },
     ],
     'proj.dash.modal.gallery': [
@@ -169,15 +168,15 @@ const TRANSLATIONS = {
     'hero.cta2':  'View projects',
     'hero.c1l': 'International Award', 'hero.c1s': 'Innovation in Roads 2024 · Spain',
     'hero.c2l': 'National Award',      'hero.c2s': 'National Presentations · Argentina 2024',
-    'hero.c3l': 'Experience',          'hero.c3v': '2+ years', 'hero.c3s': 'Civil Eng. + Data Science',
-    'hero.c4l': 'Conferences',         'hero.c4s': 'National & international',
+    'hero.c3l': 'Experience',          'hero.c3v': '3+ years', 'hero.c3s': 'Civil Eng. + Data Science',
+    'hero.c4l': 'Conferences',         'hero.c4s': 'Nat. & International',
 
     // ── ABOUT
     'about.label':    'About me',
     'about.title':    'Engineering with a<br /><em>Data-Driven</em> approach',
     'about.p1':       'I am a Civil Engineer graduated from the National University of Rosario. I combine the technical rigor of engineering with the power of data analysis and AI to solve real problems in infrastructure and construction.',
     'about.p2':       'I work at the intersection of Civil Engineering and Data Science — developing tools that automate processes, improve decision-making and generate concrete value.',
-    'about.p3':       'Internationally recognized work and research presented in Argentina, Colombia and Mexico, with lectures at national reference seminars in the road sector.',
+    'about.p3':       'Internationally recognized work and research presented in Argentina, Colombia and Mexico, with lectures at key technical seminars in the sector.',
     'about.award':    '🏆 Accésit — International Award for Innovation in Roads 2024 (X Edition · Spain)',
     'about.awardsub': '"Towards the Modernization of Pavement Surface Condition Analysis in Argentina"',
 
@@ -201,9 +200,8 @@ const TRANSLATIONS = {
     'portfolio.sub':    'Own developments and collaborations with companies, at the intersection of engineering, data, AI and automation.',
     'proj.cta':         'See details →',
     'proj.overlay':     'View project',
-    // descripción corta — sin la frase de productividad
     'proj.pav.title':   'Pavement Surface Evaluator',
-    'proj.pav.desc':    'AI-powered software that automatically detects, classifies and quantifies surface failures in pavements, integrating LCMS technology and Computer Vision.',
+    'proj.pav.desc':    'AI-powered software to detect, classify and quantify pavement failures, and implement intelligent maintenance strategies — reducing analysis times from 40 to 1 minute per kilometer.',
     'proj.pres.title':  'Industrial Project Estimator',
     'proj.pres.desc':   'Software that integrates the company\'s historical databases to accurately budget industrial projects and generate tracking exports.',
     'proj.vis.title':   'Pavement Data Visualization',
